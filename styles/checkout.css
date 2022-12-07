@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+:root{
+    --clr-gold: rgb(197, 157, 95);
+    --clr-background: hsl(210, 36%, 96%);
+    --clr-titles: color: hsl(209, 61%, 16%);;
+}
+
+
+html, body{
+    min-height: 100%;
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+    background-color: var(--clr-background);
+}
+
+.container{
+    border: solid 2px black;
+    width: 40%;
+    margin: 4rem auto;
+}
+
+.order-items{
+    flex-direction: row;
+    height: 6rem;
+    margin: 1rem 2rem;
+    display: flex;
+    box-shadow: 0px 3px 5px rgba(197, 157, 95, 0.3);
+}
+
+.order-items img{
+    object-fit: cover;
+    width: 140px;
+    border: solid 4px var(--clr-gold);
+    border-radius: 4px ;
+}
+
+.item-info{
+    width: 100%;
+    padding-left: 1rem;
+    letter-spacing: 4px;
+    color: var(--clr-titles);  
+}
+
+.item-name{
+    padding: 1rem 0; 
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.item-quantity{
+    letter-spacing: 2px;
+    width: fit-content;
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.item-total{
+    letter-spacing: 2px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.order-items div p span{
+    color: var(--clr-gold);
+    font-weight: 600;
+    font-size: 1.1rem;
+}

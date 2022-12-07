@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Menu</title>
+</head>
+<body>
+    <div class="container">
+        <span class="cart-image" data-cart> CART </span>
+        <h1>Our Menu</h1>
+        <div class="underline"></div>
+        <section class="categories">
+            <button data-all> All </button>
+            <button data-breakfast> Breakfast </button>
+            <button data-lunch> Lunch </button>
+            <button data-shakes> Shakes </button>
+            <button data-dinner> Dinner </button>
+        </section>
+
+        <section class="items" data-items>
+            
+        </section>
+    </div>
+    
+    <div class="quantity-modal hidden" data-quantity-modal>
+        <p>Select quantity</p>
+        <div>
+            <button class="decrease" data-decrease> &#60; </button>
+            <span data-quantity> 1 </span>
+            <button class="increase" data-increase> &#62; </button>
+        </div>
+            <!--TODO: make the button selector work | remove position fixed from div-->
+            <button class="cleitin" data-order-confirm> Order </button>
+    </div>
+
+    <div class="overlay hidden" data-overlay></div>
+    <script src="index.js"></script>
+</body>
+</html>
