@@ -101,7 +101,10 @@ orderConfirmBtn.addEventListener('click', (event) =>{
     cart.push(cartObject)
     quantity = 1
     quantityEl.textContent = quantity
-    cartEl.textContent = cart.length
+    if(cart.length > 0){
+        cartQuantityEl.classList.remove('hidden')
+    }
+    cartQuantityEl.textContent = cart.length
     closeModal()
 })
 
@@ -199,6 +202,7 @@ function initializeDOM(){
      increaseBtn = document.querySelector('[data-increase]')
      decreaseBtn = document.querySelector('[data-decrease]')
      orderConfirmBtn = document.querySelector('[data-order-confirm]')
+     cartQuantityEl = document.querySelector('[data-cart-quantity]')
      cartEl = document.querySelector('[data-cart]')
 }
 

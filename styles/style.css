@@ -19,8 +19,28 @@ html, body{
     padding: 4rem 8rem;
 }
 
-.cart-image{
+.cart-div{
     float: right;
+    width: 4rem;
+    cursor: pointer;
+}
+
+.container img{
+    width: 40px;
+}
+
+.cart-quantity{
+    background-color: red;
+    color: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    position: absolute;
+    right: 140px;
+    border-radius: 50%;
 }
 
 .container h1{
