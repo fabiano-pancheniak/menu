@@ -135,7 +135,7 @@ function render(array){
                         </div>
                         <p> ${array[i].about}</p>
                         <div class="order-btn">
-                            <button data-order id=${array[i].id}>Order</button>
+                            <button data-order id=${array[i].id}>Add to cart</button>
                         </div>
                     </div>
                 </div>

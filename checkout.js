@@ -24,23 +24,30 @@ let menuItems = [
     }]
 
     let cart = [] 
+    let grandTotal = 0
     cart = JSON.parse(localStorage.getItem('cart'))
 
     renderCart()
 
     function renderCart(){
-        orderItemsEl.textContent = ''
         for(let i = 0; i < cart.length; i++){
             orderItemsEl.innerHTML += `
-            
         <section class="order-items">
             <img src="${cart[i].image}" alt="">
             <div class="item-info">
                 <p class="item-name">${cart[i].name}</p>
                 <p class="item-quantity">Quantity: <span> ${cart[i].quantity} </span></p>
                 <p class="item-total">Total: <span> $ ${cart[i].quantity * cart[i].price} </span></p>
-            </section>`
+        </section>`
+        grandTotal += cart[i].quantity * cart[i].price
         }
+
+        orderItemsEl.innerHTML += 
+        `<section class="order-checkout">
+            <p class="grand-total">Total <span> $ ${grandTotal.toFixed(2)} </span></p>
+            <button class="confirm-order-btn"> Confirm Order </button>
+            </section >
+            `
     }
 
 
