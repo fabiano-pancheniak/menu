@@ -21,6 +21,7 @@ html, body{
     width: 40%;
     margin: 4rem auto;
     letter-spacing: 2px;
+    min-width: 600px;
 }
 
 .order-items{
@@ -49,6 +50,23 @@ html, body{
     padding: 1rem 0; 
     font-size: 1.2rem;
     font-weight: 500;
+}
+
+.remove-item{
+    color: rgb(235, 19, 19);
+    position: relative;
+    float: right;
+    top: -40px;
+    right: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.remove-item:hover{
+    color: rgb(177, 14, 14);
 }
 
 .item-quantity{

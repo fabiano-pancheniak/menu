@@ -1,5 +1,7 @@
 let orderItemsEl = document.querySelector('[data-order-container]')
 
+
+
 let menuItems = [
     {
         id: 1,
@@ -25,19 +27,42 @@ let menuItems = [
 
     let cart = [] 
     let grandTotal = 0
+    let currentId = null
     cart = JSON.parse(localStorage.getItem('cart'))
+    console.log(cart)
 
-    renderCart()
+    renderCart(cart)
+    
 
-    function renderCart(){
-        for(let i = 0; i < cart.length; i++){
-            orderItemsEl.innerHTML += `
-        <section class="order-items">
-            <img src="${cart[i].image}" alt="">
+   
+
+
+/*
+    itemCardEl.forEach(item => {
+        item.addEventListener('click', event => {
+            console.log(event.target.id)
+        })
+      })
+
+*/
+
+  
+
+
+
+
+    
+    function renderCart(array){
+			orderItemsEl.innerHTML = ''
+        for(let i = 0; i < array.length; i++){
+        orderItemsEl.innerHTML += `
+        <section class="order-items" data-item-card>
+            <img src="${array[i].image}" alt="">
             <div class="item-info">
-                <p class="item-name">${cart[i].name}</p>
-                <p class="item-quantity">Quantity: <span> ${cart[i].quantity} </span></p>
-                <p class="item-total">Total: <span> $ ${cart[i].quantity * cart[i].price} </span></p>
+                <p class="item-name">${array[i].name}</p>
+                <button class="remove-item" id="${array[i].id}" data-item-remove> X </button>
+                <p class="item-quantity">Quantity: <span> ${array[i].quantity} </span></p>
+                <p class="item-total">Total: <span> $ ${array[i].quantity * array[i].price} </span></p>
         </section>`
         grandTotal += cart[i].quantity * cart[i].price
         }
@@ -48,26 +73,27 @@ let menuItems = [
             <button class="confirm-order-btn"> Confirm Order </button>
             </section >
             `
-    }
+						
+						let itemCardEl = document.querySelectorAll('[data-item-card]')
+						itemCardEl.forEach(item => {
+							item.addEventListener('click', event => {
+									if(event.target.tagName === "BUTTON"){
+										currentId = event.target.id
+										grandTotal = 0
+										cart = cart.filter(cart => cart.id != currentId)
+										orderItemsEl.innerHTML = ''
+										renderCart(cart)
+									}
+									
+							})
+						})
+        }
+        
 
-
-
-    /*
-let cartLS = JSON.parse(localStorage.getItem('cart'))
-
-let dataCartDump = document.querySelector('[data-cart-dump]')
-dataCartDump.textContent += cartLS
-
-console.log(cartLS)
+        
 
 /*
-foi passado de pagina pra outra via local storage
-provavelmente nem precisa de type='module'
-refazer funcao initializeDOM()
-remover cart.js
-voltar a declaracao de let cart = [] em index.js
-estilizar icone de carrinho e indicador de itens
-estilizar botao order
+
 
 
 */

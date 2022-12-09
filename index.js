@@ -93,6 +93,7 @@ filters()
 //TODO: improve item name, quantity and pricing, make it work on checkout.html
 orderConfirmBtn.addEventListener('click', (event) =>{
     let cartObject = {
+        id: menuItems[currentId - 1].id,
         name: menuItems[currentId - 1].name,
         image: menuItems[currentId - 1].image,
         price: menuItems[currentId - 1].price,
