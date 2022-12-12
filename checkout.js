@@ -53,7 +53,8 @@ let menuItems = [
 
     
     function renderCart(array){
-			orderItemsEl.innerHTML = ''
+		orderItemsEl.innerHTML = ''
+
         for(let i = 0; i < array.length; i++){
         orderItemsEl.innerHTML += `
         <section class="order-items" data-item-card>
@@ -67,26 +68,44 @@ let menuItems = [
         grandTotal += cart[i].quantity * cart[i].price
         }
 
-        orderItemsEl.innerHTML += 
-        `<section class="order-checkout">
+        if(cart.length === 0 ){
+            orderItemsEl.innerHTML += `
+            <p class="cart-empty">
+                You cart is empty
+                <br>
+                Click <a href="index.html"> here</a> to start adding items
+            </p>` 
+        }   else {
+            orderItemsEl.innerHTML += `
+            <section class="order-checkout">
             <p class="grand-total">Total <span> $ ${grandTotal.toFixed(2)} </span></p>
-            <button class="confirm-order-btn"> Confirm Order </button>
-            </section >
-            `
-						
-						let itemCardEl = document.querySelectorAll('[data-item-card]')
-						itemCardEl.forEach(item => {
-							item.addEventListener('click', event => {
-									if(event.target.tagName === "BUTTON"){
-										currentId = event.target.id
-										grandTotal = 0
-										cart = cart.filter(cart => cart.id != currentId)
-										orderItemsEl.innerHTML = ''
-										renderCart(cart)
-									}
+            <button class="order-confirm-button"> Confirm Order </button>
+            </section >` 
+        }
+
+
+      
+         
+
+			let itemCardEl = document.querySelectorAll('[data-item-card]')
+			itemCardEl.forEach(item => {
+				item.addEventListener('click', event => {
+						if(event.target.tagName === "BUTTON"){
+							currentId = event.target.id
+							grandTotal = 0
+							cart = cart.filter(cart => cart.id != currentId)
+                            save()
+							orderItemsEl.innerHTML = ''
+							renderCart(cart)
+						}
 									
-							})
-						})
+			    })
+		    })
+        }
+
+
+        function save(){
+            localStorage.setItem('cart', JSON.stringify(cart))        
         }
         
 
@@ -94,6 +113,7 @@ let menuItems = [
 
 /*
 
-
+adicionar botao pra retornar mesmo com o carrinho cheio
+mostrar quantidades do produto que ja estao no carrinho ao adicionar ( se existir )
 
 */

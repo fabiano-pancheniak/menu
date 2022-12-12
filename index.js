@@ -69,7 +69,7 @@ let menuItems = [
 ]
 
 
-let cart = []
+let cart = JSON.parse(localStorage.getItem('cart')) || []
 console.log(cart)
 
 let menuItemsEl = document.querySelector('[data-items]')
@@ -88,6 +88,12 @@ let dinner = menuItems.filter( menuItems => menuItems.category === 'Dinner')
 let shakes = menuItems.filter( menuItems => menuItems.category === 'Shake')
 
 
+if(cart.length > 0){
+    cartQuantityEl.classList.remove('hidden')
+}
+cartQuantityEl.textContent = cart.length
+
+
 filters()
 
 //TODO: improve item name, quantity and pricing, make it work on checkout.html
@@ -99,18 +105,26 @@ orderConfirmBtn.addEventListener('click', (event) =>{
         price: menuItems[currentId - 1].price,
         quantity: quantity
     }
-    cart.push(cartObject)
-    quantity = 1
-    quantityEl.textContent = quantity
-    if(cart.length > 0){
-        cartQuantityEl.classList.remove('hidden')
+
+    if(cartItemId = cart.find(cart => cart.id === cartObject.id)){
+        cartItemId.quantity += quantity
+        quantity = 1
+    } else {
+        cart.push(cartObject)
+        quantity = 1
+        quantityEl.textContent = quantity
+        if(cart.length > 0){
+            cartQuantityEl.classList.remove('hidden')
+        }
+        cartQuantityEl.textContent = cart.length
     }
-    cartQuantityEl.textContent = cart.length
+
+    
     closeModal()
 })
 
 cartEl.addEventListener('click', () =>{
-    localStorage.setItem('cart', JSON.stringify(cart))
+    save()
     window.location.href = "checkout.html"
 })
 
@@ -214,6 +228,14 @@ function filters(){
     breakfastBtn.addEventListener('click', () => render(breakfast))
     dinnerBtn.addEventListener('click', () => render(dinner))
     shakesBtn.addEventListener('click', () => render(shakes))
+}
+
+function save(){
+    localStorage.setItem('cart', JSON.stringify(cart))        
+}
+
+function checkIfExists(){
+
 }
 
 
