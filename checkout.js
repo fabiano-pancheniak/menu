@@ -1,30 +1,6 @@
 let orderItemsEl = document.querySelector('[data-order-container]')
 
 
-
-let menuItems = [
-    {
-        id: 1,
-        name: 'Buttermilk Pancakes',
-        image: 'images/item-1.jpeg',
-        price:  15.99,
-        quantity: 1
-    },
-    {
-        id: 2,
-        name: 'Diner Double',
-        image: 'images/item-2.jpeg',
-        price: 13.99,
-        quantity: 2
-    },
-    {   
-        id: 3,
-        name: 'Country Delight',
-        image: 'images/item-4.jpeg',
-        price: 20.99,
-        quantity: 2
-    }]
-
     let cart = [] 
     let grandTotal = 0
     let currentId = null
@@ -62,8 +38,10 @@ let menuItems = [
             <div class="item-info">
                 <p class="item-name">${array[i].name}</p>
                 <button class="remove-item" id="${array[i].id}" data-item-remove> X </button>
-                <p class="item-quantity">Quantity: <span> ${array[i].quantity} </span></p>
-                <p class="item-total">Total: <span> $ ${array[i].quantity * array[i].price} </span></p>
+                <p class="item-quantity">Quantity: 
+                    <input id="${array[i].id}" type="number" value="${array[i].quantity}" min="1" max="20" data-quantity-input>
+                </p>
+                <p class="item-total">Total: <span> $ ${(array[i].quantity * array[i].price).toFixed(2)} </span></p>
         </section>`
         grandTotal += cart[i].quantity * cart[i].price
         }
@@ -79,7 +57,7 @@ let menuItems = [
             orderItemsEl.innerHTML += `
             <section class="order-checkout">
             <p class="grand-total">Total <span> $ ${grandTotal.toFixed(2)} </span></p>
-            <button class="order-confirm-button"> Confirm Order </button>
+            <button class="order-confirm-button" data-order-confirm> Confirm Order </button>
             </section >` 
         }
 
@@ -101,13 +79,42 @@ let menuItems = [
 									
 			    })
 		    })
+
+
+            let quantityInputEl = document.querySelectorAll('[data-quantity-input]')
+			quantityInputEl.forEach(item => {
+				item.addEventListener('change', event => {
+                        let newQuantity = event.target.value
+                        let idToChange = event.target.id
+                        let newCart = cart.find(cart => cart.id == idToChange)
+                        newCart.quantity = newQuantity
+                        grandTotal = 0
+                        save()
+                        renderCart(cart)
+									
+			    })
+		    })
+
+
+            let confirmOrderBtn = document.querySelector('[data-order-confirm]')
+            confirmOrderBtn.addEventListener('click', () =>{
+                window.location.href = "order-complete.html"
+            })
         }
 
 
         function save(){
             localStorage.setItem('cart', JSON.stringify(cart))        
         }
+
+      
+            
         
+            
+        
+        
+
+
 
         
 
@@ -115,5 +122,6 @@ let menuItems = [
 
 adicionar botao pra retornar mesmo com o carrinho cheio
 mostrar quantidades do produto que ja estao no carrinho ao adicionar ( se existir )
+validar pedido antes de habilitar o botao de finalizar
 
 */

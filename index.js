@@ -109,6 +109,7 @@ orderConfirmBtn.addEventListener('click', (event) =>{
     if(cartItemId = cart.find(cart => cart.id === cartObject.id)){
         cartItemId.quantity += quantity
         quantity = 1
+        quantityEl.textContent = quantity
     } else {
         cart.push(cartObject)
         quantity = 1
@@ -234,9 +235,6 @@ function save(){
     localStorage.setItem('cart', JSON.stringify(cart))        
 }
 
-function checkIfExists(){
-
-}
 
 
 
