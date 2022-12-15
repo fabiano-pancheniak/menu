@@ -4,11 +4,11 @@ let orderItemsEl = document.querySelector('[data-order-container]')
     let cart = [] 
     let grandTotal = 0
     let currentId = null
+    let isOrderValid = false
     cart = JSON.parse(localStorage.getItem('cart'))
     console.log(cart)
 
-    renderCart(cart)
-    
+    renderCart(cart) 
 
    
 
@@ -38,8 +38,8 @@ let orderItemsEl = document.querySelector('[data-order-container]')
             <div class="item-info">
                 <p class="item-name">${array[i].name}</p>
                 <button class="remove-item" id="${array[i].id}" data-item-remove> X </button>
-                <p class="item-quantity">Quantity: 
-                    <input id="${array[i].id}" type="number" value="${array[i].quantity}" min="1" max="20" data-quantity-input>
+                <p class="item-quantity">Quantity:
+                    <input id="${array[i].id}" type="number" class="quantity-input" value="${array[i].quantity}" min="1" max="20" data-quantity-input>
                 </p>
                 <p class="item-total">Total: <span> $ ${(array[i].quantity * array[i].price).toFixed(2)} </span></p>
         </section>`
@@ -57,9 +57,14 @@ let orderItemsEl = document.querySelector('[data-order-container]')
             orderItemsEl.innerHTML += `
             <section class="order-checkout">
             <p class="grand-total">Total <span> $ ${grandTotal.toFixed(2)} </span></p>
-            <button class="order-confirm-button" data-order-confirm> Confirm Order </button>
+            <button class="order-confirm-btn" data-order-confirm> Confirm Order </button>
             </section >` 
         }
+
+
+        
+        let orderConfirmBtn = document.querySelector('[data-order-confirm]')
+        let quantityInputEl = document.querySelectorAll('[data-quantity-input]')
 
 
       
@@ -80,25 +85,37 @@ let orderItemsEl = document.querySelector('[data-order-container]')
 			    })
 		    })
 
-
-            let quantityInputEl = document.querySelectorAll('[data-quantity-input]')
 			quantityInputEl.forEach(item => {
 				item.addEventListener('change', event => {
                         let newQuantity = event.target.value
                         let idToChange = event.target.id
-                        let newCart = cart.find(cart => cart.id == idToChange)
-                        newCart.quantity = newQuantity
-                        grandTotal = 0
-                        save()
-                        renderCart(cart)
-									
+                        if(event.target.value < 1 || event.target.value > 20){
+                            item.classList.add('error')
+                            orderConfirmBtn.classList.add('button-disabled')
+                            isOrderValid = false
+                        } else {
+                            isOrderValid = true
+                            item.classList.remove('error')
+                            orderConfirmBtn.classList.remove('button-disabled')
+                            let newCart = cart.find(cart => cart.id == idToChange)
+                            newCart.quantity = newQuantity
+                            grandTotal = 0
+                            save()
+                            renderCart(cart)
+                        }	
 			    })
 		    })
 
 
             let confirmOrderBtn = document.querySelector('[data-order-confirm]')
             confirmOrderBtn.addEventListener('click', () =>{
-                window.location.href = "order-complete.html"
+                if(isOrderValid){
+                    window.location.href = "order-complete.html"
+                } else{
+                    orderConfirmBtn.classList.add('button-disabled')
+                    console.log('erro')
+                }
+
             })
         }
 
@@ -106,6 +123,8 @@ let orderItemsEl = document.querySelector('[data-order-container]')
         function save(){
             localStorage.setItem('cart', JSON.stringify(cart))        
         }
+
+       
 
       
             
@@ -121,7 +140,5 @@ let orderItemsEl = document.querySelector('[data-order-container]')
 /*
 
 adicionar botao pra retornar mesmo com o carrinho cheio
-mostrar quantidades do produto que ja estao no carrinho ao adicionar ( se existir )
-validar pedido antes de habilitar o botao de finalizar
 
 */

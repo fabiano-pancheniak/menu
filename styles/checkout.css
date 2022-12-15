@@ -41,7 +41,7 @@ html, body{
     border-radius: 4px ;
 }
 
-.order-items input{
+.quantity-input{
     color: var(--clr-gold);
     font-weight: 600;
     font-size: 1.2rem;
@@ -118,7 +118,7 @@ html, body{
     font-weight: 600;
 }
 
-.order-checkout button{
+.order-confirm-btn{
     color: white;
     background-color: var(--clr-gold);
     border: none;
@@ -172,4 +172,13 @@ html, body{
     color: rgb(211, 211, 211);
 }
 
+.error{
+    border: solid 2px red;
+    color: red;
+}
+
+.button-disabled{
+    cursor: not-allowed;
+    background-color: var(--clr-gold-disabled);
+}
 
