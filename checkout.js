@@ -4,7 +4,7 @@ let orderItemsEl = document.querySelector('[data-order-container]')
     let cart = [] 
     let grandTotal = 0
     let currentId = null
-    let isOrderValid = false
+    let isOrderValid = true
     cart = JSON.parse(localStorage.getItem('cart'))
     console.log(cart)
 
@@ -106,6 +106,8 @@ let orderItemsEl = document.querySelector('[data-order-container]')
 			    })
 		    })
 
+            
+
 
             let confirmOrderBtn = document.querySelector('[data-order-confirm]')
             confirmOrderBtn.addEventListener('click', () =>{
@@ -140,5 +142,7 @@ let orderItemsEl = document.querySelector('[data-order-container]')
 /*
 
 adicionar botao pra retornar mesmo com o carrinho cheio
+tem um bug se clica direto pra finalizar ordem
+
 
 */
