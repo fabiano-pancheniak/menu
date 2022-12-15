@@ -17,6 +17,8 @@ html, body{
 
 .container{
     padding: 4rem 8rem;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .cart-div{
@@ -38,8 +40,8 @@ html, body{
     justify-content: center;
     align-items: center;
     float: right;
-    position: absolute;
-    right: 140px;
+    position: relative;
+    right: 15px;
     border-radius: 50%;
 }
 
