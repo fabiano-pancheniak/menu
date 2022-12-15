@@ -10,23 +10,6 @@ let orderItemsEl = document.querySelector('[data-order-container]')
 
     renderCart(cart) 
 
-   
-
-
-/*
-    itemCardEl.forEach(item => {
-        item.addEventListener('click', event => {
-            console.log(event.target.id)
-        })
-      })
-
-*/
-
-  
-
-
-
-
     
     function renderCart(array){
 		orderItemsEl.innerHTML = ''
@@ -58,6 +41,7 @@ let orderItemsEl = document.querySelector('[data-order-container]')
             <section class="order-checkout">
             <p class="grand-total">Total <span> $ ${grandTotal.toFixed(2)} </span></p>
             <button class="order-confirm-btn" data-order-confirm> Confirm Order </button>
+            <a href="index.html">Back to menu</a>
             </section >` 
         }
 
@@ -140,9 +124,7 @@ let orderItemsEl = document.querySelector('[data-order-container]')
         
 
 /*
-
-adicionar botao pra retornar mesmo com o carrinho cheio
-tem um bug se clica direto pra finalizar ordem
-
+TODO:
+layout mobile
 
 */

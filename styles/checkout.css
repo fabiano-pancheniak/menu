@@ -182,3 +182,8 @@ html, body{
     background-color: var(--clr-gold-disabled);
 }
 
+.order-checkout a{
+    float: right;
+    margin-top: 1rem;
+}
+
