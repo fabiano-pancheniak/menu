@@ -50,10 +50,6 @@ let orderItemsEl = document.querySelector('[data-order-container]')
         let orderConfirmBtn = document.querySelector('[data-order-confirm]')
         let quantityInputEl = document.querySelectorAll('[data-quantity-input]')
 
-
-      
-         
-
 			let itemCardEl = document.querySelectorAll('[data-item-card]')
 			itemCardEl.forEach(item => {
 				item.addEventListener('click', event => {
@@ -91,8 +87,6 @@ let orderItemsEl = document.querySelector('[data-order-container]')
 		    })
 
             
-
-
             let confirmOrderBtn = document.querySelector('[data-order-confirm]')
             confirmOrderBtn.addEventListener('click', () =>{
                 if(isOrderValid){
@@ -109,22 +103,3 @@ let orderItemsEl = document.querySelector('[data-order-container]')
         function save(){
             localStorage.setItem('cart', JSON.stringify(cart))        
         }
-
-       
-
-      
-            
-        
-            
-        
-        
-
-
-
-        
-
-/*
-TODO:
-layout mobile
-
-*/

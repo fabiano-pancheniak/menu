@@ -96,7 +96,6 @@ cartQuantityEl.textContent = cart.length
 
 filters()
 
-//TODO: improve item name, quantity and pricing, make it work on checkout.html
 orderConfirmBtn.addEventListener('click', (event) =>{
     let cartObject = {
         id: menuItems[currentId - 1].id,
@@ -182,8 +181,6 @@ checkQuantity()
 increaseBtn.addEventListener('click', () => increase())
 decreaseBtn.addEventListener('click', () => decrease())
 
-
-//TODO: avoid repeating code by adding a parameter to the increase/decrease function
 function increase(){
     checkQuantity()
     quantity = quantity + 1
