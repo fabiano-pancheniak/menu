@@ -246,3 +246,167 @@ html, body{
     backdrop-filter: blur(3px);
     z-index: 1;
   }
+
+  @media only screen and (max-width: 450px) {
+    .container{
+        padding: 0 0.5rem;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .cart-div{
+        float: none;
+        position: absolute;
+        cursor: pointer;
+        right: 0;
+        top: 1.2rem;
+    }
+
+    .container h1{
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 600;
+        padding-top: 1rem;
+        color: hsl(209, 61%, 16%);
+    }
+
+    .categories{
+        display: flex;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .categories button{
+        width: 8rem;
+    }
+
+    .item-card img{
+        width: 100px;
+        height: 100px;
+        margin: 1rem auto;
+    }
+
+    .item-card{
+        display: flex;
+        flex-direction: column;
+        margin: 1.5rem 0;
+        cursor: pointer;
+    }
+
+
+    .title-price{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .title{
+        letter-spacing: 4px;
+        color: var(--clr-titles);
+        padding: 1rem 0;
+        line-height: 1.2;
+        width: 50%;
+    }
+    
+    .price{
+        text-align: center;
+    }
+
+    .item-card p{
+        margin: 16px 0;
+        font-family: "Open Sans", sans-serif;
+        color: hsl(210, 22%, 49%);
+        line-height: 24px;
+    }
+
+   
+    
+    .order-btn button{
+        display: block;
+        padding: 5px 1.2rem;
+    }
+       
+       
+  }
+
+
+  @media only screen and (max-width: 450px) {
+    .container{
+        padding: 0 0.5rem;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .cart-div{
+        float: none;
+        position: absolute;
+        cursor: pointer;
+        right: 0;
+        top: 1.2rem;
+    }
+
+    .container h1{
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 600;
+        padding-top: 1rem;
+        color: hsl(209, 61%, 16%);
+    }
+
+    .categories{
+        display: flex;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .categories button{
+        width: 8rem;
+    }
+
+    .item-card img{
+        width: 100px;
+        height: 100px;
+        margin: 1rem auto;
+    }
+
+    .item-card{
+        display: flex;
+        flex-direction: column;
+        margin: 1.5rem 0;
+        cursor: pointer;
+    }
+
+
+    .title-price{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .title{
+        letter-spacing: 4px;
+        color: var(--clr-titles);
+        padding: 1rem 0;
+        line-height: 1.2;
+        width: 50%;
+    }
+    
+    .price{
+        text-align: center;
+    }
+
+    .item-card p{
+        margin: 16px 0;
+        font-family: "Open Sans", sans-serif;
+        color: hsl(210, 22%, 49%);
+        line-height: 24px;
+    }
+
+   
+    
+    .order-btn button{
+        display: block;
+        padding: 5px 1rem;
+        font-size: 1rem;
+    }
+       
+       
+  }

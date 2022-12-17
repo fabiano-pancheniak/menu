@@ -215,7 +215,7 @@ html, body{
 
     .item-name{
         padding-top: 0.6rem;
-        padding-bottom: 0.4rem;
+        padding-bottom: 0.8rem;
     }
 
     .item-total{
@@ -226,8 +226,21 @@ html, body{
         padding-bottom: 0.8rem;
     }
 
+    .quantity-input{
+        width: 1.2rem;
+        padding: 0 0.3rem;
+        text-align: center;
+    }
+
+   
+
     .order-checkout{
         margin: 0;
+        padding: 2rem 0;
+    }
+
+    .footer{
+        font-size: 1rem;
         padding: 2rem 0;
     }
 
