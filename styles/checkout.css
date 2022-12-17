@@ -23,6 +23,7 @@ html, body{
     min-width: 600px;
     background-color: transparent;
     max-width: 600px;
+    padding-bottom: 4rem;
 }
 
 .order-items{
