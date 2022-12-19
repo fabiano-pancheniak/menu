@@ -1,12 +1,11 @@
 let orderItemsEl = document.querySelector('[data-order-container]')
 
 
-    let cart = [] 
+    let cart = []
     let grandTotal = 0
     let currentId = null
     let isOrderValid = true
     cart = JSON.parse(localStorage.getItem('cart'))
-    console.log(cart)
 
     renderCart(cart) 
 
@@ -14,6 +13,7 @@ let orderItemsEl = document.querySelector('[data-order-container]')
     function renderCart(array){
 		orderItemsEl.innerHTML = ''
 
+       
         for(let i = 0; i < array.length; i++){
         orderItemsEl.innerHTML += `
         <section class="order-items" data-item-card>
@@ -90,6 +90,7 @@ let orderItemsEl = document.querySelector('[data-order-container]')
             let confirmOrderBtn = document.querySelector('[data-order-confirm]')
             confirmOrderBtn.addEventListener('click', () =>{
                 if(isOrderValid){
+                    localStorage.clear('cart')
                     window.location.href = "order-complete.html"
                 } else{
                     orderConfirmBtn.classList.add('button-disabled')
